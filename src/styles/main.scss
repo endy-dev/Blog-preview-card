@@ -17,6 +17,14 @@ body {
   flex-direction: column;
   gap: 1.5rem;
   font-size: 1rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 10px 10px 0 black;
+
+  &__icon {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
 
   &__body {
     display: flex;

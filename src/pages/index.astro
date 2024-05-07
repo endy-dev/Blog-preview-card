@@ -18,12 +18,9 @@ import Avatar from "../assets/image-avatar.webp";
 
   <body>
     <div class="card">
-      <Icon
-        class:list={["card__icon"]}
-        name="illustration-article"
-        height={200}
-        width={600}
-      />
+      <div class="card__icon">
+        <Icon name="illustration-article" height={200} width={600} />
+      </div>
       <div class="card__body">
         <Button classes="button" type="accent">Learning</Button>
         <p class="card__published">Published 21 Dec 2023</p>
