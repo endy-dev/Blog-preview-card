@@ -1,0 +1,17 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Navigation from "../components/Navigation.astro";
+import "../styles/main.scss";
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <BaseHead {title} />
+  <body>
+    <Navigation grow="top" stickyNav logosize={40} />
+    <main>
+      <slot />
+    </main>
+    <footer></footer>
+  </body>
+</html>

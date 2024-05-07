@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "../components/Button.astro";
+import "../styles/main.scss";
+import Image from "astro/components/Image.astro";
+
+import Avatar from "../assets/image-avatar.webp";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+  </head>
+
+  <body>
+    <div class="card">
+      <Icon
+        class:list={["card__icon"]}
+        name="illustration-article"
+        height={200}
+        width={600}
+      />
+      <div class="card__body">
+        <Button classes="button" type="accent">Learning</Button>
+        <p class="card__published">Published 21 Dec 2023</p>
+        <h2>
+          <a href="#" class="heading-3">HTML & CSS foundations</a>
+        </h2>
+        <p>
+          These languages are the backbone of every website, defining structure,
+          content, and presentation.
+        </p>
+      </div>
+      <div class="card__avatar">
+        <Image src={Avatar} alt="avatar of greg" width={32} />
+        <p>Greg Hooper</p>
+      </div>
+    </div>
+  </body>
+</html>

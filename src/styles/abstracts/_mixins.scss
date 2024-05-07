@@ -1,0 +1,48 @@
+@use "sass:meta";
+@use "sass:math";
+@use "sass:map";
+@use "breakpoints" as *;
+@use "tokens" as *;
+
+@mixin mq($size, $min-or-max: min-width) {
+  @if $min-or-max == min-width or $min-or-max == max-width {
+    @if map.has-key($breakpoints, $size) {
+      $breakpoint: map.get($breakpoints, $size);
+
+      @if meta.type-of($breakpoint) == number {
+        $valid_units: ("px", "em", "rem", "ch");
+        $valid: false;
+
+        @each $unit in $valid_units {
+          @if math.unit($breakpoint) == $unit {
+            $valid: true;
+          }
+        }
+        @if $valid {
+          @media screen and ($min-or-max: $breakpoint) {
+            @content;
+          }
+        } @else {
+          @error 'The breakpoint in $breakpoints is not a valid Unit';
+        }
+      } @else {
+        @error 'The breakpoint in $breakpoints is not a valid number';
+      }
+    } @else {
+      @error 'The $size you write is not included in $breakpoints';
+    }
+  } @else {
+    @error '$min-or-max needs to be max-width or min-width';
+  }
+}
+
+@mixin heading($fs, $color: $heading-color-default) {
+  font-size: $fs;
+  color: $color;
+
+  font-family: $heading-font-family;
+  text-transform: $heading-text-transform;
+  letter-spacing: $heading-letter-spacing;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+}

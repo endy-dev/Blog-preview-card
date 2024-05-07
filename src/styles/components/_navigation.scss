@@ -1,0 +1,28 @@
+@use "../abstracts" as *;
+
+.nav {
+  --flex-direction: row;
+  --flex-column-gap: #{$navigation-column-gap};
+  --flex-row-gap: #{$navigation-row-gap};
+  list-style: none;
+  font-family: $navigation-font-family;
+  font-weight: $navigation-font-weight;
+  font-size: $navigation-font-size;
+
+  @include mq(small, max-width) {
+    box-shadow: $navigation-mobile-box-sadow;
+  }
+
+  &-logo {
+    color: $navigation-logo-color;
+  }
+
+  a {
+    color: $navigation-color;
+    text-decoration: $navigation-link-text-decoration;
+
+    &:is(:hover, :focus) {
+      color: $navigation-color-hover;
+    }
+  }
+}

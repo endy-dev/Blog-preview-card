@@ -1,0 +1,55 @@
+---
+interface Props {
+  type?: "primary" | "accent";
+  href?: string;
+  classes?: string;
+}
+const { type, href, classes } = Astro.props;
+let Element: keyof HTMLElementTagNameMap = "button";
+if (href) Element = "a";
+---
+
+<Element href={href} class:list={["btn", classes]} data-type={type}>
+  <slot />
+</Element>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  // .btn {
+  //   display: inline-flex;
+  //   justify-content: center;
+  //   cursor: pointer;
+  //   text-decoration: none;
+  //   line-height: 1;
+  //   background-color: $button-default-background;
+  //   font-family: $button-font-family;
+  //   font-size: $button-font-size;
+  //   text-transform: $button-text-transform;
+  //   font-weight: $button-font-weight;
+  //   padding: $button-padding;
+  //   border: $button-border;
+  //   border-radius: $button-border-radius;
+  //   transition: 275ms ease;
+  //   color: black;
+
+  //   &:is(:hover, :focus) {
+  //     color: yellow;
+  //   }
+
+  //   &[data-type="accent"] {
+  //     background-color: yellow;
+  //     color: black;
+  //   }
+
+  //   &[data-type="primary"] {
+  //     background-color: $button-primary-background;
+  //     color: $button-primary-color;
+
+  //     &:is(:hover, :focus) {
+  //       background-color: $button-primary-background-hover;
+  //       color: $button-primary-color-hover;
+  //     }
+  //   }
+  // }
+</style>
